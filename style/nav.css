@@ -1,0 +1,86 @@
+* {
+  font-family: arial;
+  box-sizing: border-box;
+}
+.select + p,
+.hidden > p {
+  margin: 0;
+}
+div.select {
+  min-width: 70px;
+  padding-right: 15px;
+  padding-top: 0;
+  /* margin-left: 10px; */
+  display: inline-block;
+  border-radius: 2px;
+  /* border: 1px solid #999; */
+  position: relative;
+  /* background: white; */
+}
+div.select p {
+  /* padding: 5px; */
+  width: 100%;
+}
+div.select:after {
+  content: "▼";
+  position: absolute;
+  right: 6px;
+  top: 8px;
+  font-size: 9px;
+}
+div.select .hidden {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s;
+  /* background: white; */
+  border: 1px solid #999;
+  z-index: 10;
+  width: 100%;
+}
+div.select:hover .hidden {
+  visibility: visible;
+  opacity: 1;
+}
+div.select p:hover,
+div.select:hover {
+  background: #ddd;
+}
+
+body {
+  margin: 0;
+}
+
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  background-color: rgb(231, 195, 195);
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+#nav > div {
+  display: flex;
+  gap: 37px;
+  padding: 14px 44px;
+}
+#nav > div:last-child {
+  gap: 15px;
+}
+.select {
+  padding-bottom: -5px;
+}
+.pa {
+  padding: 0 10px;
+  padding-top: 20px;
+  height: 64px;
+}
+.pa:hover {
+  background-color: #ddd;
+  color: black;
+}
+#zom {
+  height: 93px;
+  margin-left: 301px;
+}

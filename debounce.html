@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/nav.css">
+    <link rel="stylesheet" href="./style/final.css">
+    <script src="https://kit.fontawesome.com/683b4b40e3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="nav"></div>
+        <div id="body"></div>
+    </div>
+</body>
+</html>
+<script type="module">
+    import navbar from "./components/navbar.js"
+
+    let na = document.getElementById("nav")
+    let bo = document.getElementById("body")
+    na.innerHTML = navbar()
+
+    let data = JSON.parse(localStorage.getItem("details"))
+    display(data);
+    console.log('data:', data)
+
+    function display(data){
+        
+        let {strMeal,strMealThumb,strArea,strInstructions,strYoutube} = data
+
+    let h3 = document.createElement("h3")
+    h3.textContent = strMeal
+    
+
+    let h4 = document.createElement("h4")
+    h4.textContent = strArea
+
+    let des = document.createElement("p")
+    des.textContent = strInstructions
+
+    let img = document.createElement("img")
+    img.src = strMealThumb
+
+    let p = document.createElement("a")
+    p.href =  strYoutube
+
+    p.textContent = `Click here to watch Recepie`
+    p.style.color ="blue"
+    console.log('p:', p)
+
+    let maindiv = document.createElement("div")
+
+    var div = document.createElement("div")
+  
+
+
+    var text = document.createElement("div")
+    div.append(img)
+    text.append(h3,h4,des,p)
+    maindiv.append(div,text)
+        bo.append(maindiv)
+
+    }
+ 
+</script>

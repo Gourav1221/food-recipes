@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/nav.css" />
+    <link rel="stylesheet" href="./style/signup.css" />
+    <script
+      src="https://kit.fontawesome.com/683b4b40e3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="con">
+      <div id="nav"></div>
+      <div id="body">
+        <h2>Sign-Up</h2>
+        <form action="" id="fom">
+          <input type="text" id="name" placeholder="Enter Your Name" /><br />
+          <input type="email" id="email" placeholder="Enter your Email" /><br />
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter your UserName"
+          /><br />
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+          /><br />
+          <input
+            type="number"
+            id="mobileNumber"
+            placeholder="Enter your mobileNumber"
+          /><br />
+          <input
+            type="text"
+            id="description"
+            placeholder="Enter your description"
+          /><br />
+
+          <input type="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import navbar from "./components/navbar.js";
+
+  let navba = document.getElementById("nav");
+  navba.innerHTML = navbar();
+
+  document.getElementById("fom").addEventListener("submit", myfnc);
+  let obj;
+  async function myfnc(e) {
+    e.preventDefault();
+
+    try {
+      obj = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+        mobile: document.getElementById("mobileNumber").value,
+        description: document.getElementById("description").value,
+      };
+    } catch (er) {
+      console.log("er:", er);
+    }
+    obj = JSON.stringify(obj);
+    let res = `https://masai-api-mocker.herokuapp.com/auth/register`;
+
+    let response = await fetch(res, {
+      method: "POST",
+      body: obj,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    let data = await response.json();
+    console.log("data:", data);
+
+    if (data.error) {
+      setTimeout(function () {
+      alert("User already Exists")
+      window.location.href= "signup.html"
+      }, 3000);
+
+      let img = document.createElement("img");
+      img.src = "https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif";
+      document.getElementById("body").append(img);
+    } else {
+      setTimeout(() => {
+        window.location.href = "signin.html";
+      }, 2000);
+      let img = document.createElement("img");
+      img.src = "https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif";
+      document.getElementById("body").append(img);
+    }
+  }
+</script>

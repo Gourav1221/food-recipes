@@ -1,0 +1,22 @@
+
+#body{
+    margin-top: 30px;
+}
+#body>div{
+   
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+#body>div>div:first-child{
+   height: 300px;
+}
+img{
+    height: 100%;
+}
+#body>div>div:last-child{
+padding: 5px 10px;
+padding-bottom: 25px;
+
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/683b4b40e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style/nav.css" />
+    <link rel="stylesheet" href="./style/back.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="nav"></div>
+
+      <div id="menu">
+        <div id="search">
+          <input type="text"  oninput="debounce(getfood,700)" id="inp" placeholder="Search Your Food"/>
+          <div id="detailsname" style="color: white;"></div>
+        </div>
+        <div id="result"></div>
+        
+      </div>
+      <div id="slide"></div>
+     
+      <div id="food">
+        
+      </div>
+    </div>
+  </body>
+</html>
+<script src="./scripts/menu.js"></script>
+<script src="./scripts/showdata.js"></script>
+<script src="./scripts/debounce.js"></script>
+<script type="module">
+
+  import navbar from "./components/navbar.js";
+  import { getData, append } from "./scripts/showdata.js"; 
+
+
+  let div = document.getElementById("nav");
+  div.innerHTML = navbar();
+
+  document.getElementById("big").addEventListener("click",function(){
+    window.location.href= "signup.html"
+  })
+  document.getElementById("small").addEventListener("click",function(){
+    window.location.href = "signin.html"
+    
+  })
+
+  let fo = document.getElementById("food");
+
+  let res = getData("https://www.themealdb.com/api/json/v1/1/categories.php");
+  res
+  .then((re) => {
+   
+    append(re, fo);
+  });
+
+  document.getElementById("day").addEventListener("click",myfnc)
+function myfnc(){
+  
+  window.location.href = "page.html"
+  
+}
+
+let data = JSON.parse(localStorage.getItem("details"))
+console.log('data:', data)
+
+if(data){
+  document.getElementById("detailsname").textContent = `Welcome .. ${data.name}`
+}
+
+  
+</script>

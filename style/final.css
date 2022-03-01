@@ -1,0 +1,17 @@
+#body > div {
+  display: flex;
+  gap: 5px;
+  height: 450px;
+ 
+  margin: 20px;
+}
+#body > div > div:first-child {
+  flex: 1;
+}
+#body > div > div:last-child {
+  flex: 2;
+  padding: 5px 10px;
+}
+img {
+  height: 100%;
+}

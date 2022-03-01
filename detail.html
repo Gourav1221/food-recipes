@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/683b4b40e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style/nav.css">
+    <link rel="stylesheet" href="./style/details.css">
+
+</head>
+<body>
+    <div id="container">
+        <div id="nav"></div>
+        <div id="body"></div>
+    </div>
+</body>
+</html>
+<script src="./scripts/detail.js"></script>
+<script type="module">
+
+    import navbar from "./components/navbar.js"
+    import { getData,append } from "./scripts/showdata.js"
+    import detail from "./scripts/detail.js"
+    // console.log('detail:', detail)
+    let bo = document.getElementById("body")
+    
+    let na = document.getElementById("nav")
+    na.innerHTML = navbar()
+
+    let {strCategory} = JSON.parse(localStorage.getItem("localdata"))
+
+   let res = getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${strCategory}`)
+ 
+   res
+   .then((re)=>{
+      // console.log('re:', re)
+        detail(re,bo)
+
+   })
+
+</script>

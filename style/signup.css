@@ -1,0 +1,17 @@
+
+#body{
+    border: 1px solid red;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+input{
+    width: 383px;
+    height: 43px;
+    margin-bottom: 12px;
+}
+#body>img{
+    width: 50%;
+    margin-top: -20px;
+}
